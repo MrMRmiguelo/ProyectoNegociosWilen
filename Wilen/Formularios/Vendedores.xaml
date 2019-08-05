@@ -1,0 +1,166 @@
+<Window x:Class="Proyecto_Inmobiliaria.Formularios.Vendedores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Proyecto_Inmobiliaria"
+        mc:Ignorable="d"
+         Title="Vendedores" Height="670" Width="1075" WindowStartupLocation="Manual" Top="130" Left="295" ResizeMode="NoResize" WindowStyle="None" BorderBrush="Gainsboro" BorderThickness="2">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <!--#region Barra Superior De Herramientas-->
+
+        <Border Grid.Row="0" Grid.ColumnSpan="3" Background="Gainsboro"  MouseLeftButtonDown="Border_MouseLeftButtonDown">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="btnMax" Background="Gainsboro" Visibility="Visible" Click="BtnMax_Click" MouseEnter="BtnMax_MouseEnter"  MouseLeave="BtnMax_MouseLeave" BorderThickness="0">
+                    <materialDesign:PackIcon Kind="WindowMaximize"/>
+                </Button>
+                <Button Name="btnRest" Background="Gainsboro" Visibility="Collapsed" MouseEnter="BtnRest_MouseEnter" MouseLeave="BtnRest_MouseLeave" Click="BtnRest_Click" BorderThickness="0">
+                    <materialDesign:PackIcon Kind="WindowRestore"/>
+                </Button>
+                <Button Name="btnCerrar" Background="Gainsboro" MouseEnter="BtnCerrar_MouseEnter" MouseLeave="BtnCerrar_MouseLeave" Click="BtnCerrar_Click" BorderThickness="0">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="0" Background="Transparent" HorizontalAlignment="Left" Margin="20 0 0 0">
+            <TextBlock FontSize="20" Foreground="Black" >Vendedores</TextBlock>
+        </Border>
+        <!--#endregion-->
+
+        <Border Grid.Row="1" Grid.ColumnSpan="3" Background="Silver" BorderBrush="#FF1B64CF" BorderThickness="1" >
+            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
+
+                <Button Name="btnListado" Content="Listado" Margin="5 0 5 0" Click="BtnListado_Click" MouseEnter="BtnListado_MouseEnter" MouseLeave="BtnListado_MouseLeave" Background="Gainsboro"/>
+                <Button Name="btnMantenimiento" Content="Mantenimiento" Click="BtnMantenimiento_Click" MouseEnter="BtnMantenimiento_MouseEnter" MouseLeave="BtnMantenimiento_MouseLeave" Background="Gainsboro"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <!--#region Panel Listado-->
+        <Border Name="PanelListado" Grid.RowSpan="5" Grid.ColumnSpan="3" Visibility="Visible" Width="1000" Margin="0 70">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="187*"/>
+                    <ColumnDefinition Width="813*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="115,3">
+                    <StackPanel Orientation="Horizontal" >
+
+                        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                            <TextBox x:Name="txtbuscar" Width="200" FontSize="25" Foreground="Blue"  materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.IsFloating="True">
+
+                            </TextBox>
+                            <Button Name="btnLBuscarVentas" Background="Gainsboro"  Width="80" Height="60" Margin="10 0 0 0" Click="BtnLBuscarVentas_Click">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Search" Width="40" Height="40" Margin="5"/>
+
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <Button Name="btnLEliminarVentas" Background="Gainsboro" Margin="300 20 0 0" Width="180" Height="60" Click="BtnLEliminarVentas_Click" >
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Kind="Delete" Width="40" Height="40" Margin="5"/>
+                                <TextBlock FontSize="25" Margin="5">Eliminar</TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="40">
+                        <!--Espacio Para Total de Registros -->
+                    </StackPanel>
+                    <DataGrid x:Name="dgllenar"  Height="400" Background="Gainsboro">
+
+                    </DataGrid>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+        <!--#region Panel Mantenimiento-->
+        <Border Name="PanelMantenimientoPart1" Visibility="Hidden"  Grid.ColumnSpan="2" Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="180,16,181,0" HorizontalAlignment="Center" VerticalAlignment="Top" >
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="txtNombre" Width="300" Background="White" Style="{StaticResource MaterialDesignFloatingHintTextBox }" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" FontSize="25" Foreground="Blue" Margin="0 0 0 15"/>
+                    <TextBox Name="txtSectorComercial" Width="300" Background="White" Style="{StaticResource MaterialDesignFloatingHintTextBox }" materialDesign:HintAssist.Hint="Sector Comercial" materialDesign:HintAssist.IsFloating="True" FontSize="25" Foreground="Blue" Margin="110 0 0 15"/>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="cbTipoDocumento" Width="auto" FontSize="25" Foreground="Blue" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Tipo de Documento" materialDesign:HintAssist.IsFloating="True" Margin=" 0 0 90 25" >
+                        <ComboBoxItem >DNI</ComboBoxItem>
+
+
+                    </ComboBox>
+                    <StackPanel Orientation="Vertical" Margin="225 0 0 0" />
+                </StackPanel>
+
+                <TextBox Name="txtDocumento" Width="250" Background="White" Style="{StaticResource MaterialDesignFloatingHintTextBox }" materialDesign:HintAssist.Hint="Documento" materialDesign:HintAssist.IsFloating="True" FontSize="25" Foreground="Blue" Margin="0 0 0 15" HorizontalAlignment="Left"/>
+                <TextBox Name="txtDireccion" Height="120" Width="250" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Direccion" materialDesign:HintAssist.IsFloating="False" Background="Gainsboro" Foreground="White" FontSize="25" Margin="0 0 0 0" HorizontalAlignment="Left"></TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="txtTelefono" Width="200" Background="White" Style="{StaticResource MaterialDesignFloatingHintTextBox }" materialDesign:HintAssist.Hint="Telefono" materialDesign:HintAssist.IsFloating="True" FontSize="25" Foreground="Blue" Margin="0 0 0 15" HorizontalAlignment="Left"/>
+                    <TextBox Name="txtCorreo" Width="300" Background="White" Style="{StaticResource MaterialDesignFloatingHintTextBox }" materialDesign:HintAssist.Hint="Correo" materialDesign:HintAssist.IsFloating="True" FontSize="25" Foreground="Blue" Margin="200 0 0 15" HorizontalAlignment="Left"/>
+
+                </StackPanel>
+
+
+
+            </StackPanel>
+        </Border>
+
+
+
+
+        <Border Grid.Row="3" Grid.ColumnSpan="3" Name="PanelMantenimientoBotones" Visibility="Hidden">
+            <StackPanel Orientation="Horizontal" Height="100" HorizontalAlignment="Center">
+                <!--Espacio Para Total de Registros -->
+
+                <Button Name="btnNuevo" Width="150" Height="60" Margin="15 0 0 0" Background="Gainsboro" Click="BtnNuevo_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FilePlus" Width="40" Height="40" />
+                        <TextBlock FontSize="25" Margin="5">Nuevo</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnGuardar" Width="170" Height="60" Margin="15 0 0 0" Background="Gainsboro" Click="BtnGuardar_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ContentSave" Width="40" Height="40"/>
+                        <TextBlock FontSize="25" Margin="5">Guardar</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnEditar" Width="170" Height="60" Margin="15 0 0 0" Background="Gainsboro" Click="BtnEditar_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Edit" Width="40" Height="40"/>
+                        <TextBlock FontSize="25" Margin="5">Editar</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnCancelar" Width="175" Height="60" Margin="15 0 15 0" Background="Gainsboro" Click="BtnCancelar_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cancel" Width="40" Height="40"/>
+                        <TextBlock FontSize="25" Margin="5">Cancelar</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+        </Border>
+        <!--#endregion-->
+
+    </Grid>
+</Window>
+
